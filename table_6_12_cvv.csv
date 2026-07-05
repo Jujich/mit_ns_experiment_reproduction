@@ -1,0 +1,12 @@
+case,section,thickness_ft,area_ft2,volume_ft3,row_type,formula_or_note,printed_result,calculated_result
+Case 1 - 5 ft. thick walls and slabs,Concrete Vertical,5,108000,540000,data,,,
+Case 1 - 5 ft. thick walls and slabs,Concrete Vertical,4,10200,40800,data,,,
+Case 1 - 5 ft. thick walls and slabs,Concrete Vertical,3,36750,110250,data,,,
+Case 1 - 5 ft. thick walls and slabs,Concrete Vertical,,154950,701050,total,,,
+Case 1 - 5 ft. thick walls and slabs,Concrete Horizontal,5,142302,711510,data,assume average slab thickness = 5 ft.,,
+Case 1 - 5 ft. thick walls and slabs,Total Concrete Volume,,,1412560,total,"701,050 + 711,510",1412560,1412560
+Case 1 - 5 ft. thick walls and slabs,CVV,,,1763085,total_formula,"(1.5 x VCV) + HCV = (1.5 x 701,050) + 711,510",1763085,1763085
+Case 2 - 3 ft. thick walls and 4 ft. slabs,Concrete Vertical,3,154950,464850,data,3 ft. walls,,
+Case 2 - 3 ft. thick walls and 4 ft. slabs,Concrete Horizontal,4,142302,569208,data,4 ft. slab average,,
+Case 2 - 3 ft. thick walls and 4 ft. slabs,Total Concrete Volume,,,1034058,total,"464,850 + 569,208",1034058,1034058
+Case 2 - 3 ft. thick walls and 4 ft. slabs,Concrete Volume Value,,,1034058,total_formula,"(1.5 x 464,850) + 569,208",1034058,1266483

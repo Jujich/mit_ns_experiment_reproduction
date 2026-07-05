@@ -1,0 +1,12 @@
+section,level,anchor,roof,aligned,penalty_mis_x2,total
+MVAV - supports,1,82,0,84,52,216
+MVAV - supports,2,24,0,104,30,158
+MVAV - supports,3,0,16,92,20,128
+MVAV - supports,4,0,86,84,0,170
+MVAV - supports,Total MVAV,,,,,672
+MHAV - supports,1,,,33,12,45
+MHAV - supports,2,,,41,18,59
+MHAV - supports,3,,,37,16,53
+MHAV - supports,4,,,34,16,50
+MHAV - supports,Total MHAV,,,,,207
+MAV formula,MAV = ((4) x 672) + 207,,,,,2895

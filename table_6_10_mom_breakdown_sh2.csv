@@ -1,0 +1,18 @@
+System,No. Interfaces,MBIV
+1. Component Cooling Water,43,246
+2. Chemical & Volume Control,,
+Letdown & Charging,21,78
+BTRS,5,10
+BRS,4,14
+PMS/BA,7,18
+Total CVCS,37,120
+3. Residual Heat Removal,14,207
+4. Containment Spray,12,122
+5. Safety Injection,,
+High Pressure,15,96
+Low Pressure,5,100
+Total SIS,20,196
+6. Auxiliary Feedwater,7,51
+7. Emergency Service Water,29,220
+8. Steam Generator Blowdown,9,18
+Totals for all systems,171,1180
