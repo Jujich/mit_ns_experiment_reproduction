@@ -1,0 +1,13 @@
+component,subcomponent,shearon_harris_musd,shearon_harris_ii_musd,pct_sh2_vs_sh,notes,source
+MOM,total,1.125,0.621,55,site pipe connectors,Table 9-2
+PPRV,pipe_length,2.10,0.970,46,,Table 9-2
+PPRV,pipe_bends,2.70,1.180,44,,Table 9-2
+PPRV,subtotal,4.80,2.15,45,,Table 9-2
+CVV,case1_5ft_conventional,76.4,,,thick walls/slabs,Table 9-2
+CVV,case1_5ft_modular,,44.0,58,thick walls/slabs,Table 9-2
+CVV,case2_5ft_conventional,,53.7,,thick walls/slabs,Table 9-2
+CVV,case2_5ft_modular,,44.0,82,thick walls/slabs,Table 9-2
+CVV,case1_3ft_conventional,65.7,,,realistic thickness used in econ,Table 9-2
+CVV,case1_3ft_modular,,38.9,59,realistic thickness used in econ,Table 9-2
+CVV,case2_3ft_conventional,,46.2,,realistic thickness used in econ,Table 9-2
+CVV,case2_3ft_modular,,38.9,83,realistic thickness used in econ,Table 9-2

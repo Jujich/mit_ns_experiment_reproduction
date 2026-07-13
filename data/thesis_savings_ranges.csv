@@ -1,0 +1,5 @@
+case_id,conventional_years,savings_pct_min,savings_pct_max,savings_musd_min,savings_musd_max,avg_savings_pct,avg_savings_musd,notes,source
+1,7,36.6,56.5,108.5,278.8,46,190,max at 50pct schedule and 14pct interest,Ch.9.6.3
+1,5,35.1,50.4,92.6,191.4,42,145,,Ch.9.6.3
+2,7,12.9,40.3,27.9,144.7,26,80,,Ch.9.6.3
+2,5,10.9,31.9,20.9,88.2,20,50,,Ch.9.6.3

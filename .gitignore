@@ -1,0 +1,9 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mplconfig/
+.DS_Store
+*.egg-info/
+.pytest_cache/

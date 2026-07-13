@@ -1,0 +1,530 @@
+{
+  "thesis": "Lapp, C.W. (1989). A Methodology for Modular Nuclear Power Plant Design and Construction. MIT.",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Division of Nuclear / Non-Nuclear Buildings",
+      "thesis_ref": "5.2.2 / 6.2.2",
+      "description": "Split site layout along nuclear vs non-nuclear QA/labor boundaries.",
+      "ai_assist": "LLM can classify buildings/systems from FSAR text into nuclear vs non-nuclear.",
+      "status_in_repo": "constraints digitized in data/design_constraints.json",
+      "checklist": [
+        "Tag each building nuclear/non-nuclear",
+        "Separate QA/QC labor pools"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "System Assignments to Buildings",
+      "thesis_ref": "5.2.3 / 6.2.3 / Table 6-1",
+      "description": "Assign systems (RCS, CVCS, MS, …) to RB/RAB/CB/FHB/WPB/TB.",
+      "ai_assist": "LLM extracts system→building maps from plant descriptions / P&IDs captions.",
+      "status_in_repo": "system_labels.csv includes building_hint",
+      "checklist": [
+        "Produce system list per building",
+        "Flag multi-building systems"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Matrix Analysis of Power Plant Systems",
+      "thesis_ref": "5.2.4 / 6.2.4 / Fig 6-1",
+      "description": "Build cost-penalty interaction matrix and reorder/cluster systems.",
+      "ai_assist": "Modern optimizers (GA+LS etc.) replace 1989 BEA heuristic on the DSM.",
+      "status_in_repo": "DONE — core benchmark in repo",
+      "checklist": [
+        "Digitize interface matrix",
+        "Run clustering / partition",
+        "Review clusters with engineers"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Designation of Safety and Non-Safety Regions",
+      "thesis_ref": "5.2.5 / 6.2.5 / Table 6-3",
+      "description": "Define safety / non-safety / train A-B regions before placement.",
+      "ai_assist": "LLM extracts separation criteria; optimizer applies soft/hard constraints.",
+      "status_in_repo": "safety tags in system_labels.csv + mixing penalties",
+      "checklist": [
+        "Mark safety systems",
+        "Encode train separation as constraints"
+      ]
+    },
+    {
+      "number": 5,
+      "title": "System Placement",
+      "thesis_ref": "5.2.6 / 6.2.6",
+      "description": "Place clustered systems into plant regions using matrix priorities.",
+      "ai_assist": "AI proposes placement candidates; engineers approve.",
+      "status_in_repo": "partial — partition only, no 3D layout",
+      "checklist": [
+        "Map clusters to regions",
+        "Respect major component anchors"
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Power Plant Route-Way Placement",
+      "thesis_ref": "5.2.7 / 6.2.7",
+      "description": "Assign pipe/cable route-ways between modules/regions.",
+      "ai_assist": "Pathfinding / LLM-assisted routing suggestions from topology graphs.",
+      "status_in_repo": "not implemented (needs geometry)",
+      "checklist": [
+        "Define route-ways",
+        "Minimize congested crossings"
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Component Placement",
+      "thesis_ref": "5.2.8 / 6.2.8",
+      "description": "Place major components inside modules/regions.",
+      "ai_assist": "Constraint solvers + LLM reading equipment lists.",
+      "status_in_repo": "not implemented",
+      "checklist": [
+        "Place major equipment",
+        "Check maintainability access"
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Defining Modular Boundaries",
+      "thesis_ref": "5.2.9 / 6.2.9",
+      "description": "Cut modules to maximize self-sufficiency / minimize interfaces.",
+      "ai_assist": "Same as matrix partition objective; GA+LS already improves cut.",
+      "status_in_repo": "DONE for cut objective; DV-proxy extends it",
+      "checklist": [
+        "Propose module boundaries",
+        "Validate transport/weight limits"
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Pipe Penalty Routing Value (PPRV)",
+      "thesis_ref": "5.2.10 / 5.5 / 6.2.10",
+      "description": "Score pipe length, bends, elevations, crossovers.",
+      "ai_assist": "Needs pipe-run data; LLM can help digitize tables; surrogate uses cut.",
+      "status_in_repo": "historical PPRV validated; surrogate only for new partitions",
+      "checklist": [
+        "Collect pipe runs",
+        "Compute penalties",
+        "Iterate routing"
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Measure of Modularity (MOM)",
+      "thesis_ref": "5.2.11 / 6.2.11",
+      "description": "Sum module boundary interface values.",
+      "ai_assist": "Directly computable from partition + interaction matrix.",
+      "status_in_repo": "DONE for matrix-derived MOM/cut",
+      "checklist": [
+        "Compute MBIV per system",
+        "Feed back into boundary refinement"
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Module Alignment Value (MAV)",
+      "thesis_ref": "5.2.12 / 6.2.12",
+      "description": "Vertical/horizontal alignment difficulty of modules.",
+      "ai_assist": "Requires support geometry; surrogate uses size balance.",
+      "status_in_repo": "SH II MAV validated; surrogate for optimizer",
+      "checklist": [
+        "Count aligned/misaligned supports",
+        "Compute MVAV/MHAV"
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Design Value (DV) and refinement",
+      "thesis_ref": "5.2.13 / 5.6 / 6.2.13",
+      "description": "DV = A1·MOM + A2·MAV + A3·PPRV + A4·CVV + A5·MFV; iterate design.",
+      "ai_assist": "DV-proxy optimizer closes the gap between cut-only and full DV narrative.",
+      "status_in_repo": "historical DV validated; DV-proxy experiment added",
+      "checklist": [
+        "Compute DV",
+        "Compare Original vs Modular",
+        "Iterate until convergence"
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "matrix_id": 1,
+      "abbreviation": "RCS",
+      "full_name": "Reactor Coolant System",
+      "cluster_block": "I",
+      "safety_class": "safety",
+      "building_hint": "RB/RAB"
+    },
+    {
+      "matrix_id": 2,
+      "abbreviation": "SIS",
+      "full_name": "Safety Injection System (high & low press.)",
+      "cluster_block": "I",
+      "safety_class": "safety",
+      "building_hint": "RB/RAB"
+    },
+    {
+      "matrix_id": 3,
+      "abbreviation": "RHR",
+      "full_name": "Residual Heat Removal",
+      "cluster_block": "I",
+      "safety_class": "safety",
+      "building_hint": "RB/RAB"
+    },
+    {
+      "matrix_id": 4,
+      "abbreviation": "CS",
+      "full_name": "Containment Spray System",
+      "cluster_block": "I",
+      "safety_class": "safety",
+      "building_hint": "RB/RAB"
+    },
+    {
+      "matrix_id": 5,
+      "abbreviation": "CVCS",
+      "full_name": "Chemical & Volume Control System",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "RAB"
+    },
+    {
+      "matrix_id": 6,
+      "abbreviation": "BTRS",
+      "full_name": "Boron Thermal Regeneration System",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "RAB"
+    },
+    {
+      "matrix_id": 7,
+      "abbreviation": "BRS",
+      "full_name": "Boron Recycle System",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "RAB"
+    },
+    {
+      "matrix_id": 8,
+      "abbreviation": "CCW",
+      "full_name": "Component Cooling Water",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "RAB/FHB"
+    },
+    {
+      "matrix_id": 9,
+      "abbreviation": "ESW",
+      "full_name": "Emergency Service Water",
+      "cluster_block": "II",
+      "safety_class": "safety",
+      "building_hint": "RAB"
+    },
+    {
+      "matrix_id": 10,
+      "abbreviation": "AFW",
+      "full_name": "Auxiliary Feedwater",
+      "cluster_block": "IV",
+      "safety_class": "safety",
+      "building_hint": "RAB"
+    },
+    {
+      "matrix_id": 11,
+      "abbreviation": "FP&C",
+      "full_name": "Fuel Pool Cooling & Cleaning",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "FHB"
+    },
+    {
+      "matrix_id": 12,
+      "abbreviation": "MS",
+      "full_name": "Main Steam",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "RAB/TB"
+    },
+    {
+      "matrix_id": 13,
+      "abbreviation": "SD",
+      "full_name": "Steam Dump System",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 14,
+      "abbreviation": "AS",
+      "full_name": "Auxiliary Steam",
+      "cluster_block": "IV",
+      "safety_class": "secondary",
+      "building_hint": "TB/WPB"
+    },
+    {
+      "matrix_id": 15,
+      "abbreviation": "FW",
+      "full_name": "Feedwater System",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "RAB/TB"
+    },
+    {
+      "matrix_id": 16,
+      "abbreviation": "COND",
+      "full_name": "Condensate System",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 17,
+      "abbreviation": "FWHV&D",
+      "full_name": "Feedwater Heater Vents & Drains",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 18,
+      "abbreviation": "SGBD",
+      "full_name": "Steam Generator Blowdown",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 19,
+      "abbreviation": "MT",
+      "full_name": "Main Turbine",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 20,
+      "abbreviation": "GSSS",
+      "full_name": "Gland Seal Steam System",
+      "cluster_block": "IV",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 21,
+      "abbreviation": "NSW",
+      "full_name": "Normal Service Water",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 22,
+      "abbreviation": "DMRWMU",
+      "full_name": "Demineralized & Reactor Water Make-up",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "RAB/WPB"
+    },
+    {
+      "matrix_id": 23,
+      "abbreviation": "WPS",
+      "full_name": "Waste Process System",
+      "cluster_block": "II",
+      "safety_class": "non_safety_primary",
+      "building_hint": "WPB"
+    },
+    {
+      "matrix_id": 24,
+      "abbreviation": "CONDENSER",
+      "full_name": "Condenser Systems",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    },
+    {
+      "matrix_id": 25,
+      "abbreviation": "ES",
+      "full_name": "Extraction Steam",
+      "cluster_block": "III",
+      "safety_class": "secondary",
+      "building_hint": "TB"
+    }
+  ],
+  "constraints": {
+    "source": "Lapp 1989 Ch.5–6 (Steps 1–4, Table 6-2, Table 6-3)",
+    "nuclear_related_systems": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      22,
+      23
+    ],
+    "non_nuclear_related_systems": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25
+    ],
+    "safety_systems": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10
+    ],
+    "non_safety_primary_systems": [
+      5,
+      6,
+      7,
+      8,
+      11,
+      22,
+      23
+    ],
+    "secondary_systems": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25
+    ],
+    "cluster_blocks": {
+      "I_safety_primary": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "II_nonsafety_primary": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        22,
+        23
+      ],
+      "III_energy_transfer": [
+        12,
+        15,
+        16,
+        18,
+        21,
+        24,
+        25
+      ],
+      "IV_auxiliary_secondary": [
+        10,
+        14,
+        20
+      ]
+    },
+    "soft_rules": [
+      "Prefer keeping safety systems (SIS/RCS/RHR/CS/ESW/AFW) co-located or in adjacent modules",
+      "Avoid mixing nuclear-grade and non-nuclear work packages in the same module when possible",
+      "Respect safety train A/B separation conceptually (not fully encoded without layout geometry)",
+      "min_size=2 systems per module; max_size = max(5, n//k + 3)"
+    ],
+    "hard_partition_constraints": {
+      "min_size": 2,
+      "forbid_mixing_groups": [
+        {
+          "name": "nuclear_vs_secondary",
+          "group_a": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "group_b": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            24,
+            25
+          ],
+          "penalty_per_mixed_edge": 50,
+          "description": "Soft penalty when a module mixes primary nuclear and secondary energy systems"
+        }
+      ]
+    }
+  },
+  "table_9_1_dv_components": [
+    {
+      "dv_component": "MOM",
+      "shearon_harris": 2112,
+      "shearon_harris_ii": 1180,
+      "pct_sh2_vs_sh": 56,
+      "source": "Table 9-1"
+    },
+    {
+      "dv_component": "MAV",
+      "shearon_harris": 4236,
+      "shearon_harris_ii": 2895,
+      "pct_sh2_vs_sh": 68,
+      "source": "Table 9-1"
+    },
+    {
+      "dv_component": "PPRV",
+      "shearon_harris": 5901,
+      "shearon_harris_ii": 2773,
+      "pct_sh2_vs_sh": 54,
+      "source": "Table 9-1"
+    },
+    {
+      "dv_component": "CVV",
+      "shearon_harris": 1801000,
+      "shearon_harris_ii": 1266483,
+      "pct_sh2_vs_sh": 70,
+      "source": "Table 9-1"
+    },
+    {
+      "dv_component": "MFV",
+      "shearon_harris": 5102,
+      "shearon_harris_ii": 3444,
+      "pct_sh2_vs_sh": 67,
+      "source": "Table 9-1"
+    }
+  ],
+  "agent_instructions": "You are an engineering assistant for modular NPP design methodology. Guide the user through Steps 1–12. Cite thesis refs. Do not invent pipe/layout numbers that are not in the context. Clearly mark computed vs historical vs surrogate values."
+}

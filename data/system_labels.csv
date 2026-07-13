@@ -1,0 +1,26 @@
+matrix_id,abbreviation,full_name,cluster_block,safety_class,building_hint
+1,RCS,Reactor Coolant System,I,safety,RB/RAB
+2,SIS,Safety Injection System (high & low press.),I,safety,RB/RAB
+3,RHR,Residual Heat Removal,I,safety,RB/RAB
+4,CS,Containment Spray System,I,safety,RB/RAB
+5,CVCS,Chemical & Volume Control System,II,non_safety_primary,RAB
+6,BTRS,Boron Thermal Regeneration System,II,non_safety_primary,RAB
+7,BRS,Boron Recycle System,II,non_safety_primary,RAB
+8,CCW,Component Cooling Water,II,non_safety_primary,RAB/FHB
+9,ESW,Emergency Service Water,II,safety,RAB
+10,AFW,Auxiliary Feedwater,IV,safety,RAB
+11,FP&C,Fuel Pool Cooling & Cleaning,II,non_safety_primary,FHB
+12,MS,Main Steam,III,secondary,RAB/TB
+13,SD,Steam Dump System,III,secondary,TB
+14,AS,Auxiliary Steam,IV,secondary,TB/WPB
+15,FW,Feedwater System,III,secondary,RAB/TB
+16,COND,Condensate System,III,secondary,TB
+17,FWHV&D,Feedwater Heater Vents & Drains,III,secondary,TB
+18,SGBD,Steam Generator Blowdown,III,secondary,TB
+19,MT,Main Turbine,III,secondary,TB
+20,GSSS,Gland Seal Steam System,IV,secondary,TB
+21,NSW,Normal Service Water,III,secondary,TB
+22,DMRWMU,Demineralized & Reactor Water Make-up,II,non_safety_primary,RAB/WPB
+23,WPS,Waste Process System,II,non_safety_primary,WPB
+24,CONDENSER,Condenser Systems,III,secondary,TB
+25,ES,Extraction Steam,III,secondary,TB

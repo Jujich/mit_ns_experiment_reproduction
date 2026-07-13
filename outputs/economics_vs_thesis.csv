@@ -1,0 +1,5 @@
+case_id,conventional_years,model_savings_pct_min,model_savings_pct_max,model_savings_pct_mean,thesis_savings_pct_min,thesis_savings_pct_max,thesis_avg_savings_pct,model_avg_vs_thesis_avg_pp
+1,7.0,34.1,46.69,39.3,36.6,56.5,46,-6.7
+1,5.0,33.25,42.36,36.97,35.1,50.4,42,-5.03
+2,7.0,9.5,26.8,16.65,12.9,40.3,26,-9.35
+2,5.0,8.33,20.84,13.45,10.9,31.9,20,-6.55

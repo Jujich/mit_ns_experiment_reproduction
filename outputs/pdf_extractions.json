@@ -1,0 +1,79 @@
+{
+  "table_9_1": {
+    "name": "table_9_1",
+    "description": "Design Value components Original vs Modular SH II",
+    "pages": [
+      340,
+      340
+    ],
+    "raw_text": "                                  339\n\nconstruction is as opposed to an improved design which uses less\n\nmaterial.     The first case examines the difference in design and\n\nconstruction methods while the second examines the difference\n\nbetween    modular   and   conventional    construction   for   the   same\ndesign.      Before estimating costs a comparison of their design\nvalues is examined in the next section.\n\n\n\n9.2     Comparison of the Two Designs\n\n\n\n9.2.1     Design Value Comparisons\n\n\n\n        The components of the design value for Shearon Harris and\n\nShearon Harris II power plant have been calculated in chapter 5\n\nand 6.     The quantities for the following are compared:\n\n  - Measure of Modularity\n\n  - Module Alignment Value\n\n  - Pipe Penalty Routing Value\n\n  - Concrete Volume Value\n\n  - Modular Function Value.\n\n\n\n        The value for each of the DV components above are shown in\nTable 9-1.     With these values a relative percentage between the\n\ntwo designs     is also calculated   (SH   II vs. SH).    Design Value\ncomponents are weighted according to their relative economic\n\ncontribution.     This is with the coefficients in the design value\n\nso that an equitable representation of value and cost is\n\f",
+    "numbers_found": [
+      339.0,
+      9.2,
+      9.2,
+      1.0,
+      5.0,
+      6.0,
+      9.0,
+      1.0
+    ],
+    "expected_keys": [
+      "MOM",
+      "MAV",
+      "PPRV",
+      "CVV",
+      "MFV"
+    ]
+  },
+  "table_9_2": {
+    "name": "table_9_2",
+    "description": "Cost estimate comparison for DV components",
+    "pages": [
+      345,
+      345
+    ],
+    "raw_text": "                                           344\n\n            - Embedments\n\n            - Structural Supports.\n\n        All of these cost estimates include the costs of labor in\n\nperforming each specific task.              The results of this        analysis are\nreported in the next section.\n\n\n\n9.3.2      Results of Cost Estimates\n\n\n\n       The first component of the DV to be estimated here is the\n\nMOM.       The MOM is the cost of connecting piping systems at the\n\nplant after the module has been installed.                      It is assumed that\nthis    connection       is   done   with    a    standard      bent   or   straight\nsection.       As    a   rough    estimate       half   of    the   connectors     are\nstraight and        half the      connectors are        bent.       For non-nuclear\nsafety      (NNS) class piping the bent section is composed of one\n\nelbow and two straight sections.                 They are shop fabricated in\n\nthe site     factory and delivered to the power plant as modules are\n\ninstalled.       For     safety    grade    piping      the   piece    is   a   single\nsection bent to a radius according to the pipe diameter (R=5xD)                     .\nThe final cost of the MOM for the two plants is the following:\n\n(Table 9-2)\n\n\n\n   -   Shearon Harris MOM            = 1.125 million dollars\n\n   - Shearon Harris II MOM = 0.621 million dollars.\n\n\n\n       It should be noted that the cost for the pipe length\n\f",
+    "numbers_found": [
+      344.0,
+      9.3,
+      2.0,
+      5.0,
+      9.0,
+      2.0,
+      1.125,
+      0.621
+    ],
+    "expected_keys": [
+      "MOM",
+      "PPRV",
+      "CVV"
+    ]
+  },
+  "table_6_2": {
+    "name": "table_6_2",
+    "description": "25 RAB systems for matrix analysis",
+    "pages": [
+      206,
+      206
+    ],
+    "raw_text": "                                                205\n\n the Reactor Auxiliary Building and its associated systems.                                  The\n\n RAB systems and their associated matrix identification number\n\n are shown in Table 6-2.\n\n\n\n 6.2.4     Step 3 - Matrix Analysis of Systems\n\n\n\n         With    the    list    of     major    plant       systems     (piping/equipment\n\n systems) completed the interfaces between them can be evaluated\n\nand with the Cost Penalty Matrix clustering analysis.                                 For each\n\nsystem      tables       of     interfaces            and     their     pipe    size/safety\n\nclassification          are     generated.             With    this     information         each\ninterface        is    given      an    economic        penalty        according       to    the\nprocedure described              in Chapter 2.              This     information      is    then\nplaced in a symmetric matrix form to relate each system to every\n\nother one.        For the RAB case studied here the input matrix is\n\nshown in Fig.          6-1.\n\n       After      running        this     input        matrix       through     the     matrix\n\nreordering       program        an     output    matrix        of    grouped    systems       is\nproduced as shown in Fig. 6-2.                   The clustered systems from this\n\nmatrix are then given priority for adjacent placement                                   in the\nplant while the those systems which do not cluster or have low\n\nvalues     are    given       lower     priority       in     the plant       layout.        The\ndetermination of the clustered boundaries                             in this matrix are\n\nleft   to the individual designer.                We selected cluster boundaries\n\nthat     encompassed          numerically       large       adjacent     matrix       elements\nsince they       represent        systems with          high        interaction    and      cost\n\f",
+    "numbers_found": [
+      205.0,
+      6.0,
+      2.0,
+      6.2,
+      4.0,
+      3.0,
+      2.0,
+      6.0,
+      1.0,
+      6.0,
+      2.0
+    ],
+    "expected_keys": [
+      "RCS",
+      "SIS",
+      "RHR"
+    ]
+  }
+}
