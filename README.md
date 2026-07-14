@@ -47,7 +47,9 @@
 | Methodology navigator | Steps 1–12 + LLM context pack | `python scripts/methodology_navigator.py --list` |
 | PDF extract | pdftotext (+ optional LLM) | `python scripts/extract_pdf_tables.py` |
 
-Бриф для заказчика: [`docs/ROSATOM_BRIEF.md`](docs/ROSATOM_BRIEF.md).
+Документы для заказчика:
+- бриф / следующие шаги: [`docs/ROSATOM_BRIEF.md`](docs/ROSATOM_BRIEF.md)
+- отчёт о результатах воспроизведения: [`docs/ROSATOM_RESULTS.md`](docs/ROSATOM_RESULTS.md)
 
 ### DV-proxy (главный следующий эксперимент)
 
