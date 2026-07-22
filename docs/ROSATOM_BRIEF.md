@@ -1,5 +1,7 @@
 # Бриф для Росатома: воспроизведение MIT Lapp (1989) + ИИ
 
+Операционный runbook: [RUNBOOK.md](RUNBOOK.md) · отчёт: [ROSATOM_RESULTS.md](ROSATOM_RESULTS.md) · метрики: [METRICS_AND_GLOSSARY.md](METRICS_AND_GLOSSARY.md)
+
 ## Что уже сделано (текущий benchmark)
 
 - Оцифрована матрица взаимодействий 25×25 (Fig. 6-1, Shearon Harris).

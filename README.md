@@ -51,6 +51,7 @@
 - бриф / следующие шаги: [`docs/ROSATOM_BRIEF.md`](docs/ROSATOM_BRIEF.md)
 - отчёт о результатах воспроизведения: [`docs/ROSATOM_RESULTS.md`](docs/ROSATOM_RESULTS.md)
 - метрики, ход работ и словарь аббревиатур: [`docs/METRICS_AND_GLOSSARY.md`](docs/METRICS_AND_GLOSSARY.md)
+- общий runbook по работе: [`docs/RUNBOOK.md`](docs/RUNBOOK.md)
 
 ### DV-proxy (главный следующий эксперимент)
 

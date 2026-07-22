@@ -9,6 +9,7 @@
 
 - краткий бриф (следующие шаги): [ROSATOM_BRIEF.md](ROSATOM_BRIEF.md)
 - метрики, ход работ и словарь аббревиатур: [METRICS_AND_GLOSSARY.md](METRICS_AND_GLOSSARY.md)
+- общий runbook: [RUNBOOK.md](RUNBOOK.md)
 - инструкция по воспроизведению: [§9 в этом файле](#9-инструкция-по-воспроизведению)
 
 ---
